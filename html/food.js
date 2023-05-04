@@ -1732,6 +1732,28 @@ export const food = {
 	},
 
 	//DST Ingredients
+	asparagus_dst: {
+		name: 'Asparagus',
+		isveggie: true,
+		veggie: 1,
+		health: healing_small,
+		hunger: calories_small,
+		sanity: 0,
+		perish: perish_fast,
+		stack: stack_size_smallitem,
+		mode: 'together'
+	},
+	asparagus_cooked_dst: {
+		name: 'Cooked Asparagus',
+		isveggie: true,
+		veggie: 1,
+		health: healing_small,
+		hunger: calories_med,
+		sanity: 0,
+		perish: perish_superfast,
+		stack: stack_size_smallitem,
+		mode: 'together'
+	},
 	wormlight_lesser: {
 		name: 'Lesser Glow Berry',
 		//uncookable = true, <- Not anymore
@@ -2242,7 +2264,7 @@ export const food = {
 		stack: stack_size_smallitem,
 		mode: 'together'
 	},
-	
+
 	// DST Return of Them: Waterlogged beta
 	fig: {
 		name: 'Fig',

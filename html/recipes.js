@@ -1380,15 +1380,29 @@ export const recipes = {
 		cooktime: 2,
 		mode: 'together'
 	},
+	asparagussoup_dst: {
+		name: 'Asparagus Soup',
+		test: (cooker, names, tags) => {
+			return (names.asparagus_dst || names.asparagus_cooked_dst) && tags.veggie && tags.veggie >= 2 && !tags.meat && !tags.inedible;
+		},
+		requirements: [SPECIFIC('asparagus_dst'), TAG('veggie', COMPARE('>=', 2)), NOT(TAG('meat')), NOT(TAG('inedible'))],
+		priority: 10,
+		foodtype: 'veggie',
+		health: healing_med,
+		hunger: calories_medsmall,
+		perish: perish_slow,
+		sanity: sanity_tiny,
+		cooktime: 0.5,
+		mode: 'together'
+	},
 
 	// Warly DST recipes, waiting for issue #32 to be solved
-	/*
 	gazpacho: {
 		name: 'Asparagazpacho',
 		test: (cooker, names, tags) => {
-			return names.asparagus && names.asparagus === 2 && names.ice && names.ice === 2;
+			return names.asparagus_dst && names.asparagus_dst === 2 && names.ice && names.ice === 2;
 		},
-		requirements: [SPECIFIC('asparagus', COMPARE('=', 2)), SPECIFIC('ice', COMPARE('=', 2))],
+		requirements: [SPECIFIC('asparagus_dst', COMPARE('=', 2)), SPECIFIC('ice', COMPARE('=', 2))],
 		priority: 30,
 		foodtype: 'veggie',
 		health: healing_small,
@@ -1398,6 +1412,7 @@ export const recipes = {
 		temperatureduration: buff_food_temp_duration,  // Varies from season to season
 		perish: perish_slow,
 		cooktime: 0.5,
+		note: 'Can only be cooked by Warly',
 		mode: 'warly' //+ 'together'
 	},
 	bonesoup: {
@@ -1413,6 +1428,7 @@ export const recipes = {
 		sanity: sanity_tiny,
 		perish: perish_med,
 		cooktime: 2,
+		note: 'Can only be cooked by Warly',
 		mode: 'warly' //+ 'together'
 	},
 	frogfishbowl: {
@@ -1428,7 +1444,7 @@ export const recipes = {
 		sanity: -sanity_small,
 		perish: perish_fastish,
 		cooktime: 2,
-		note: 'Sets wetness to 0 and grants wetness immunity for 300 seconds',
+		note: 'Can only be cooked by Warly. Sets wetness to 0 and grants wetness immunity for 300 seconds',
 		mode: 'warly' //+ 'together'
 	},
 	glowberrymousse: {
@@ -1444,7 +1460,7 @@ export const recipes = {
 		perish: perish_fastish,
 		sanity: sanity_small,
 		cooktime: 1,
-		note: 'Gives 600 seconds of light',
+		note: 'Can only be cooked by Warly. Gives 600 seconds of light',
 		mode: 'warly' //+ 'together'
 	},
 	nightmarepie: {
@@ -1460,7 +1476,7 @@ export const recipes = {
 		perish: perish_med,
 		sanity: sanity_tiny,
 		cooktime: 2,
-		note: 'Swaps health and sanity values',
+		note: 'Can only be cooked by Warly. Swaps health and sanity values',
 		mode: 'warly' //+ 'together'
 	},
 	dragonchilisalad: {
@@ -1479,6 +1495,7 @@ export const recipes = {
 		// nochill: true, ?
 		perish: perish_slow,
 		cooktime: 0.75,
+		note: 'Can only be cooked by Warly',
 		mode: 'warly' //+ 'together'
 	},
 	moqueca: {
@@ -1494,6 +1511,7 @@ export const recipes = {
 		perish: perish_fastish,
 		sanity: sanity_large,
 		cooktime: 2,
+		note: 'Can only be cooked by Warly',
 		mode: 'warly' //+ 'together'
 	},
 	potatosouffle: {
@@ -1509,6 +1527,7 @@ export const recipes = {
 		perish: perish_med,
 		sanity: sanity_med,
 		cooktime: 2,
+		note: 'Can only be cooked by Warly',
 		mode: 'warly' //+ 'together'
 	},
 	voltgoatjelly: {
@@ -1524,10 +1543,10 @@ export const recipes = {
 		perish: perish_med,
 		sanity: sanity_small,
 		cooktime: 2,
-		note: 'All damage caused becomes electrical damage',
+		note: 'Can only be cooked by Warly. All damage caused becomes electrical damage',
 		mode: 'warly' //+ 'together'
-	}
-	*/
+	},
+
 
 	// preparednonfoods – not dishes, but made in crock pot
 	batnosehat: {
