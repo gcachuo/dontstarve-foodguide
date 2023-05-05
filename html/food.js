@@ -46,6 +46,13 @@ export const food = {
 		stack: stack_size_smallitem,
 		mode: 'giants'
 	},
+	acorn_dst: {
+		name: 'Birchnut',
+		seed: 1,
+		perish: perish_preserved,
+		stack: stack_size_smallitem,
+		mode: 'together'
+	},
 	acorn_cooked: {
 		name: 'Roasted Birchnut',
 		ideal: true,

@@ -486,6 +486,22 @@ export const recipes = {
 		cooktime: 0.5,
 		mode: 'giants'
 	},
+	trailmix_dst: {
+		name: 'Trail Mix',
+		test: (cooker, names, tags) => {
+			// return names.acorn_cooked && tags.seed && tags.seed >= 1 && (names.berries || names.berries_cooked || names.berries_juicy || names.berries_juicy_cooked) && tags.fruit && tags.fruit >= 1 && !tags.meat && !tags.veggie && !tags.egg && !tags.dairy; <- For when issue #32 is sorted out
+			return (names.acorn_dst || names.acorn_cooked) && tags.seed && tags.seed >= 1 && (names.berries || names.berries_cooked) && tags.fruit && tags.fruit >= 1 && !tags.meat && !tags.veggie && !tags.egg && !tags.dairy;
+		},
+		requirements: [OR(SPECIFIC('acorn_dst'), SPECIFIC('acorn_cooked')), TAG('seed', COMPARE('>=', 1)), NAME('berries'), TAG('fruit', COMPARE('>=', 1)), NOT(TAG('meat')), NOT(TAG('veggie')), NOT(TAG('egg')), NOT(TAG('dairy'))],
+		priority: 10,
+		foodtype: 'veggie',
+		health: healing_medlarge,
+		hunger: calories_small,
+		perish: perish_slow,
+		sanity: sanity_tiny,
+		cooktime: 0.5,
+		mode: 'together'
+	},
 	hotchili: {
 		name: 'Spicy Chili',
 		test: (cooker, names, tags) => {
@@ -759,6 +775,21 @@ export const recipes = {
 		perish: perish_med,
 		sanity: sanity_small,
 		cooktime: 2,
+		mode: 'warly'
+	},
+	monstertartare_dst: {
+		name: 'Monster Tartare',
+		test: (cooker, names, tags) => {
+			return tags.monster && tags.monster >= 2;
+		},
+		requirements: [TAG('monster', COMPARE('>=', 2))],
+		priority: 30,
+		foodtype: 'meat',
+		health: -healing_med,
+		hunger: calories_small * 5,
+		perish: perish_med,
+		sanity: -sanity_med,
+		cooktime: 0.5,
 		mode: 'warly'
 	},
 	freshfruitcrepes: {
